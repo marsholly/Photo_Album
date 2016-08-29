@@ -5,11 +5,11 @@ const AlbumActions = {
   createAlbum(album) {
     API.createAlbum(album);
   },
-  editAlbums(id, album){
-    API.editAlbums(id, album);
+  editAlbum(id, album){
+    API.editAlbum(id, album);
   },
-  deleteAlbums(id){
-    API.deleteAlbums(id);
+  deleteAlbum(id){
+    API.deleteAlbum(id);
   }
   // lookup(zipcode){
   //   API.lookup(zipcode);

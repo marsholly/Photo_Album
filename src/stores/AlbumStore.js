@@ -33,8 +33,6 @@ class AlbumStore extends EventEmitter {
   getAll() {
     return _albums;
   }
-
-
 }
 
 export default new AlbumStore();
