@@ -6,5 +6,8 @@ const albumSchema = new mongoose.Schema({
   createAt: {type: Date, default: Date.now, required: true}
 });
 
+
+
+
 const Album = mongoose.model('Album', albumSchema);
 module.exports = Album;
