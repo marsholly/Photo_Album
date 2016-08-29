@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AlbumActions from '../actions/AlbumActions';
+import {browserHistory} from 'react-router';
 import moment from 'moment';
 
 export default class AlbumList extends Component {
@@ -15,6 +16,7 @@ export default class AlbumList extends Component {
     this.editAlbum=this.editAlbum.bind(this);
     this.saveMe=this.saveMe.bind(this);
     this.deleteAlbum=this.deleteAlbum.bind(this);
+    this.seePic=this.seePic.bind(this);
   }
 
   editAlbum(id){
@@ -40,6 +42,11 @@ export default class AlbumList extends Component {
     AlbumActions.deleteAlbum(id);
   }
 
+  seePic(){
+    let pic = this.props.pic;
+    browserHistory.push({pathname:'/albums/viewPic', query:{ pic : pic}});
+  }
+
   render() {
     let { _id, name, pic, createAt }  = this.props;
     if(this.state.editing){
@@ -63,7 +70,9 @@ export default class AlbumList extends Component {
       }else{
         return(
           <tr className='trFont'>
-            <td><img src={pic} width="200 px" alt="No Image"/></td>
+            <td onClick={this.seePic}>
+              <img src={pic} width="200 px" alt="No Image"/>
+            </td>
             <td>{name}</td>
             <td>{moment(createAt).format('lll')}</td>
             <td>

@@ -6,6 +6,7 @@ import App from './components/App';
 import AlbumsNav from './components/AlbumsNav';
 import Addalbum from './components/Addalbum';
 import AllAlbums from './components/AllAlbums';
+import ViewPicture from './components/ViewPicture';
 
 
 render(
@@ -15,17 +16,9 @@ render(
       <Route path='albums' component={AlbumsNav}>
         <Route path='addalbum' component={Addalbum}></Route>
         <Route path='allAlbums' component={AllAlbums}></Route>
+        <Route path='viewPic' component={ViewPicture}></Route>
       </Route>
     </Route>
   </Router>,
   document.getElementById('root')
 );
-
-
-
-
-// <Route path='buy' component={BuyNav}>
-
-
-// <Route path='search' component={SearchPage}></Route>
-// </Route>

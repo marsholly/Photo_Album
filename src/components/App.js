@@ -13,12 +13,12 @@ export default class App extends Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link to='/' className="navbar-brand" href="#">Albums</Link>
+              <Link to='/' className="navbar-brand">Albums App</Link>
             </div>
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav navbar-right">
                 <li><Link to='/'>HOME</Link></li>
-                <li><Link to='/albums'>ALBUMS</Link></li>
+                <li><Link to='/albums/allAlbums'>ALBUMS</Link></li>
               </ul>
             </div>
           </div>

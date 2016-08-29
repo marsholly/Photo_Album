@@ -13,8 +13,6 @@ export default class AlbumsNav extends Component {
               <ul className="nav navbar-nav">
               <li><Link to="/albums/allAlbums">All Albums</Link></li>
                 <li><Link to="/albums/addalbum">Add</Link></li>
-                <li><Link to="/albums">X</Link></li>
-                <li><Link to="/albums">Y</Link></li>
               </ul>
             </div>
           </div>
