@@ -7,6 +7,8 @@ import AlbumsNav from './components/AlbumsNav';
 import Addalbum from './components/Addalbum';
 import AllAlbums from './components/AllAlbums';
 import ViewPicture from './components/ViewPicture';
+import AddPhoto from './components/AddPhoto';
+import AllPhotos from './components/AllPhotos';
 
 
 render(
@@ -17,6 +19,9 @@ render(
         <Route path='addalbum' component={Addalbum}></Route>
         <Route path='allAlbums' component={AllAlbums}></Route>
         <Route path='viewPic' component={ViewPicture}></Route>
+        <Route path='addPhoto' component={AddPhoto}></Route>
+        <Route path='allPhotos' component={AllPhotos}></Route>
+
       </Route>
     </Route>
   </Router>,

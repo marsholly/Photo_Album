@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import {Jumbotron, Button} from 'react-bootstrap';
-import { Link } from 'react-router';
-import '../css/style.css'
+var async = require('async')
+var _ = require('underscore')
 
-export default class Welcome extends Component {
-  render() {
-    return(
-      <div className="container">
-        <div className="row">
-          <Jumbotron>
-            <h1 className="text-center">Welcome to Albums</h1>
-          </Jumbotron>
-        </div>
-      </div>
-    )
+var Helpers = function(mongoose) {
+  this.mongoose = mongoose || require('mongoose')
+
+  this.dropCollections = function(callback) {
+    var collections = _.keys(mongoose.connection.collections)
+    async.forEach(collections, function(collectionName, done) {
+      var collection = mongoose.connection.collections[collectionName]
+      collection.drop(function(err) {
+        if (err && err.message != 'ns not found') done(err)
+        done(null)
+      })
+    }, callback)
   }
 }
+
+module.exports = Helpers

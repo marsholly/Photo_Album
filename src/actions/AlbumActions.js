@@ -10,16 +10,10 @@ const AlbumActions = {
   },
   deleteAlbum(id){
     API.deleteAlbum(id);
+  },
+  addAlbum(albumId, photoId){
+    API.addAlbum(albumId, photoId);
   }
-  // lookup(zipcode){
-  //   API.lookup(zipcode);
-  // },
-  // lookupPrice(low, high){
-  //   API.lookupPrice(low, high);
-  // },
-  // lookupBedroom(low, high){
-  //   API.lookupBedroom(low, high);
-  // }
 }
 
 export default AlbumActions;

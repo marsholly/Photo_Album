@@ -6,7 +6,7 @@ router.route('/')
   .get((req, res)=>{
     Album.find({}, (err, albums)=>{
       res.status(err ? 400 :200).send(err || albums);
-    })
+    }).populate('Photo')
   })
   .post((req, res)=>{
     Album.create(req.body, (err, album)=>{
@@ -25,7 +25,7 @@ router.route('/:id')
         return res.status(400).send(err || 'Album not found');
       }
       res.send(album);
-    })
+    }).populate('Photo')
   })
   .delete((req, res) => {
     Album.findByIdAndRemove(req.params.id, err => {
@@ -44,45 +44,29 @@ router.route('/:id')
       }
       Album.find({}, (err,albums) =>{
         res.status(err ? 400 : 200).send(err || albums);
+      }).populate('Photo')
+    })
+  })
+
+
+  router.put('/:albumId/addPhoto/:photoId', (req, res) => {
+    Album.findById(req.params.albumId, (err, album) => {
+      if (err || !album) {
+        return res.status(400).send(err || 'Album not found.');
+      }
+
+      let photoId = req.params.photoId
+      album.photos.push(photoId);
+      album.save((err, savedAlbum) => {
+        res.status(err ? 400: 200).send(err || savedAlbum);
       })
     })
   })
 
-// router.route('/lookup/:zipcode')
-//   .get((req, res) => {
-//     Album.find({zipcode: req.params.zipcode}, (err, albums) => {
-//       if(err|| !albums){
-//         return res.status(400).send(err || 'Album not found');
-//       }
-//       res.send(albums);
-//     });
-//   })
-//
-// router.route('/lookup/price/:low/:high')
-//   .get((req, res) => {
-//     Album
-//       .where('price').gte(req.params.low).lte(req.params.high)
-//       .where('buyer', { $exists :false } )
-//       .exec((err, albums )=>{
-//         if(err|| !albums){
-//           return res.status(400).send(err || 'Album not found');
-//         }
-//         res.send(albums);
-//       });
-//   })
-//
-// router.route('/lookup/bed/:low/:high')
-//   .get((req, res) => {
-//     Album
-//       .where('beds').gte(req.params.low).lte(req.params.high)
-//       .where('buyer', {$exists : false}  )
-//       .exec((err, albums) => {
-//         if(err|| !albums){
-//           return res.status(400).send(err || 'Album not found');
-//         }
-//         res.send(albums);
-//       });
-//   })
+
+
+
+
 
 
 module.exports = router;

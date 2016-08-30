@@ -12,7 +12,19 @@ const ServerActions = {
       type: 'RECEIVE_ONE_ALBUM',
       album
     })
-  }
+  },
+  receivePhotos(photos) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_PHOTOS',
+      photos
+    })
+  },
+  receiveOnePhoto(photo) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_ONE_PHOTO',
+      photo
+    })
+  },
 }
 
 export default ServerActions;

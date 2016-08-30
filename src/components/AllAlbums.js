@@ -43,9 +43,8 @@ export default class AllAlbums extends Component {
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>Photo</th>
                 <th>Name</th>
-                <th>Create_At</th>
+                <th>AddPhoto</th>
                 <th>edit</th>
                 <th>delete</th>
               </tr>

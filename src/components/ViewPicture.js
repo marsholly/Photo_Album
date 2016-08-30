@@ -11,7 +11,7 @@ export default class ViewPicture extends Component {
   }
 
   goBack(){
-    browserHistory.push({pathname:'/albums/allAlbums'})
+    browserHistory.push({pathname:'/albums/allPhotos'})
   }
   render() {
     let picture = this.props.location.query.pic;
