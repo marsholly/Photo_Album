@@ -45,6 +45,7 @@ export default class AllAlbums extends Component {
               <tr>
                 <th>Name</th>
                 <th>AddPhoto</th>
+                <th>Show Photos</th>
                 <th>edit</th>
                 <th>delete</th>
               </tr>

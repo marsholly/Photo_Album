@@ -32,10 +32,11 @@ export default class AllPhotos extends Component {
 
   render() {
     let {photos} = this.state;
+    let albumId = this.props.location.query.albumId;
     console.log('this.state.photos:', this.state.photos)
     const listPhotos = photos.map(photo => {
       return (
-        <PhotoList key={photo._id} {...photo} />
+        <PhotoList key={photo._id} {...photo} albumId={albumId} />
       )
     })
 

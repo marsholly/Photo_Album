@@ -9,6 +9,7 @@ import AllAlbums from './components/AllAlbums';
 import ViewPicture from './components/ViewPicture';
 import AddPhoto from './components/AddPhoto';
 import AllPhotos from './components/AllPhotos';
+import IntoAlbums from './components/IntoAlbums';
 
 
 render(
@@ -21,7 +22,7 @@ render(
         <Route path='viewPic' component={ViewPicture}></Route>
         <Route path='addPhoto' component={AddPhoto}></Route>
         <Route path='allPhotos' component={AllPhotos}></Route>
-
+        <Route path='intoAlbums' component={IntoAlbums}></Route>
       </Route>
     </Route>
   </Router>,

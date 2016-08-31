@@ -16,6 +16,7 @@ export default class PhotoList extends Component {
     this.saveMe=this.saveMe.bind(this);
     this.deletePhoto=this.deletePhoto.bind(this);
     this.seePic=this.seePic.bind(this);
+    this.addToAlbum=this.addToAlbum.bind(this);
   }
 
   editPhoto(id){
@@ -44,8 +45,13 @@ export default class PhotoList extends Component {
     browserHistory.push({pathname:'/albums/viewPic', query:{ pic : pic}});
   }
 
+  addToAlbum(albumId, photoId){
+    AlbumActions.addAlbum(albumId, photoId);
+    browserHistory.push('/album/');
+  }
+
   render() {
-    let { _id, pic, createAt }  = this.props;
+    let { _id, pic, createAt, albumId}  = this.props;
     if(this.state.editing){
       return (
         <tr>
@@ -71,7 +77,7 @@ export default class PhotoList extends Component {
             </td>
             <td>{moment(createAt).format('lll')}</td>
             <td>
-              <button id = {_id} className="btn btn-success btn-xs" >
+              <button id = {_id} className="btn btn-success btn-xs" onClick={()=>this.addToAlbum(albumId,_id)}>
                 <span className="glyphicon glyphicon-picture"></span>
               </button>
             </td>
