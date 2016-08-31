@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PhotoActions from '../actions/PhotoActions';
 import {browserHistory} from 'react-router';
 import moment from 'moment';
-import AlbumActions from '../actions/AlbumActions';
 
-export default class PhotoList extends Component {
+export default class PhotoListForAlbum extends Component {
   constructor(props){
     super(props);
 
@@ -17,7 +16,6 @@ export default class PhotoList extends Component {
     this.saveMe=this.saveMe.bind(this);
     this.deletePhoto=this.deletePhoto.bind(this);
     this.seePic=this.seePic.bind(this);
-    this.addToAlbum=this.addToAlbum.bind(this);
   }
 
   editPhoto(id){
@@ -46,10 +44,6 @@ export default class PhotoList extends Component {
     browserHistory.push({pathname:'/albums/viewPic', query:{ pic : pic}});
   }
 
-  addToAlbum(albumId, photoId){
-    AlbumActions.addAlbum(albumId, photoId);
-    browserHistory.push('/albums/allAlbums');
-  }
 
   render() {
     let { _id, pic, createAt, albumId}  = this.props;
@@ -77,11 +71,6 @@ export default class PhotoList extends Component {
               <img src={pic} width="200 px" alt="No Image"/>
             </td>
             <td>{moment(createAt).format('lll')}</td>
-            <td>
-              <button id = {_id} className="btn btn-success btn-xs" onClick={()=>this.addToAlbum(albumId,_id)}>
-                <span className="glyphicon glyphicon-picture"></span>
-              </button>
-            </td>
             <td>
               <button id = {_id} className="btn btn-primary btn-xs" onClick={()=>this.editPhoto(_id)}>
                 <span className="glyphicon glyphicon-pencil"></span>

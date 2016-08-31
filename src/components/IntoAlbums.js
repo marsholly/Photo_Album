@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import AlbumStore from '../stores/AlbumStore'
 import PhotoActions from '../actions/PhotoActions'
-// import SoldList from './SoldList'
+import PhotoListForAlbum from './PhotoListForAlbum'
 
 export default class IntoAlbums extends Component{
 
   constructor(){
     super();
     this.state = {
-      houses: AlbumStore.getAll()
+      albums: AlbumStore.getAll()
     }
     this._onChange = this._onChange.bind(this);
   }
@@ -24,33 +24,36 @@ export default class IntoAlbums extends Component{
 
   _onChange() {
     this.setState({
-      houses:  AlbumStore.getAll()
+      albums:  AlbumStore.getAll()
     });
   }
 
   render(){
-  //  const soldList  = this.state.houses.map( house => {
-  //     return (
-  //       <SoldList key = {house._id} {...house}/>
-  //     )
-  //   })
+    let name;
+   const albumList  = this.state.albums.map( album => {
+      name = album.name;
+      return (
+        <PhotoListForAlbum key = {album._id} {...album}/>
+      )
+    })
     return(
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th>Picture</th>
-          <th>Address</th>
-          <th>Sqft</th>
-          <th>Beds</th>
-          <th>Baths</th>
-          <th>Price</th>
-          <th>Photo</th>
-        </tr>
-      </thead>
-      <tbody>
-       
-      </tbody>
-      </table>
+      <div>
+        <h2>{name}</h2>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Create_At</th>
+              <th>edit</th>
+              <th>delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {albumList}
+          </tbody>
+          </table>
+      </div>
+
     )
   }
 }
